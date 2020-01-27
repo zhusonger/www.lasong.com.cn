@@ -1,7 +1,7 @@
 ## Settings
-title: pRoJEct-NeGYa
-owner: "DeerRIDER"
-url: "https://akiritsu.github.io"
+title: 猪猪屋
+owner: "Zhusong"
+url: "https://blog.lasong.com.cn"
 baseurl: "/pRoJEct-NeGYa"
 permalink: /:title/
 description: ""
@@ -10,8 +10,8 @@ webrick:
   headers:
     Access-Control-Allow-Origin: "*"
 ## Global Variables
-email: "akiritsu@outlook.com"
-github: "akiritsu/pRoJEct-NeGYa"
+email: "song.zhu@lasong.com.cn"
+github: "zhusonger/zhusonger.github.io"
 # path to: css/, fonts/, img/ and js/
 assets_path: "/assets" # i.e. "/assets" 
 statement: "Designed by DeerRIDER, All Rights Reserved"
