@@ -5,8 +5,8 @@ toc: false
 home_btn: true
 btn_text: true
 footer: true
-title: ""
-author: ""
+title: "猪猪屋-Home"
+author: "Zhusong"
 encrypted_text: true
 permalink: /
 ---
