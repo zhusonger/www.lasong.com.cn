@@ -34,7 +34,3 @@ permalink: /
 * <a href="http://jenkins.lasong.com.cn">Jenkins</a> - 自动化任务
 * <a href="https://blog.lasong.com.cn">Blog</a> - 个人博客
 
-## Link
-
-[**pRoJEct NeGYa (Github)**](https://github.com/akiritsu/pRoJEct-NeGYa)
-
