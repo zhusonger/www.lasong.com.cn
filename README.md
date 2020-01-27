@@ -1,37 +1,47 @@
-## Welcome to GitHub Pages
+# PRoJEct-NeGYa
 
-You can use the [editor on GitHub](https://github.com/zhusonger/blog/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+黑客风格的个人主页模板。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+版本： v1.01
 
-### Markdown
+## 特性
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+1. 狂拽酷炫
+2. Rouge支持代码高亮
+3. MathJax公式
+4. 文章索引
+5. 高度可定制化
+6. 加密内容（也可以把元素id改成密文，元素内容写“无该字段访问权限！”）
 
-```markdown
-Syntax highlighted code block
+## 更新日志
 
-# Header 1
-## Header 2
-### Header 3
+2019.7.17：更新说明文件
 
-- Bulleted
-- List
+2019.6.15：老子就做这一版，凑合能用得了，我可不改了啊！
 
-1. Numbered
-2. List
+## 使用方法
 
-**Bold** and _Italic_ and `Code` text
+* 下载或者fork到自己的github仓库里
+* 修改_config.yml文件
+* （自定义域名）修改CNAME文件
+* 修改pages/index.md文件，自定义主页
+* 删除_posts/文件夹里的文件，添加自己的文章
+* 同步到github远程仓库
 
-[Link](url) and ![Image](src)
-```
+## 工程结构
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+功能和内容隔离TMD！
 
-### Jekyll Themes
+网站内容：
+* _posts：文章
+* pages：页面
+* assets/img：图
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/zhusonger/blog/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+功能样式：
+* _includes：子页面模块
+* _layouts：页面模板（单纯地组合子页面模块）
+* assets/css：样式表文件
+* assets/fonts：字体文件
+* assets/js：脚本文件
+* _config.yml：配置文件
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
