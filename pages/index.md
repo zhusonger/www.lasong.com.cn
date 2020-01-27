@@ -23,6 +23,12 @@ permalink: /
 	* <p class="encrypted" id="A62fkfFGPDxgCQUIjpHrBQf0yAMhScO9HNlxjxsy+UjnmmNg==">***********</p>
 * Education
 	* Zhejiang University of Technology/CST/Software Engineering 2009
+* Skill
+	* Android - 6year
+	* iOS - 8month
+	* Unity - 4month
+	* JavaWeb - 1year
+
 
 ##  Servers
 * <a href="http://jenkins.lasong.com.cn">Jenkins</a> - 自动化任务

@@ -1,7 +1,7 @@
 ---
 title: Sample Code - Quick Sort
 layout: post
-category: Sample
+category: NeGYa
 date: 2019-2-4
 ---
 
