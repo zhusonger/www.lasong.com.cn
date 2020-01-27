@@ -2,7 +2,7 @@
 title: 猪猪屋
 owner: "Zhusong"
 url: "https://blog.lasong.com.cn"
-baseurl: "/zhusonger.github.io"
+baseurl: ""
 permalink: /:title/
 description: ""
 markdown: kramdown
@@ -14,7 +14,8 @@ email: "song.zhu@lasong.com.cn"
 github: "zhusonger/zhusonger.github.io"
 # path to: css/, fonts/, img/ and js/
 assets_path: "/assets" # i.e. "/assets" 
-statement: "Designed by DeerRIDER, All Rights Reserved"
+statement: "Zhusong, All Rights Reserved"
+aq: "浙ICP备20003389号-1"
 # default max toc levels: 1 - 6 (h1 - h6)
 toc_level: 3
 # texts randomly displayed in background

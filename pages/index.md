@@ -1,6 +1,6 @@
 ---
 layout: default
-post_list: "date"
+post_list: "category"
 toc: false
 home_btn: true
 btn_text: true
@@ -11,31 +11,24 @@ encrypted_text: true
 permalink: /
 ---
 
-# PROJECT NEGYA - HACKER-STYLE PERSONAL HOMEPAGE
+## Information
+* Name 
+	* Zhu Song
+* Job
+	* Developer.Android
+* Address
+	* Home - Hangzhou/FuYang
+	* Live - Hangzhou/XiHuQu	
+* Phone
+	* <p class="encrypted" id="A62fkfFGPDxgCQUIjpHrBQf0yAMhScO9HNlxjxsy+UjnmmNg==">***********</p>
+* Education
+	* Zhejiang University of Technology/CST/Software Engineering 2009
 
-##  Features
-* Highly customizable, content-oriented with The Matrix style
-* Eyesight-protection layout
-* Decrypt and encrypt text (access token: 233): 
-  * secret msg 1: 
-  <p class="encrypted" id="/MZAf/PKx9jpw8/Jnp7XQQFki2ibGnArZP46W+keVThXquhWwFROEFnbY8eC57Tw==">Encrypted content!</p>
-  * secret msg 2: 
-  <p class="encrypted" id="G7D+0370pNmixIP1j7teCg1jtm9XCdOWYFH61lcM0LYWlT0hB3rS9raIs=">Encrypted content!</p>
-* LaTeX formula Support with MathJax
+##  Servers
+* <a href="http://jenkins.lasong.com.cn">Jenkins</a> - 自动化任务
+* <a href="https://blog.lasong.com.cn">Blog</a> - 个人博客
 
-$$
-NADH+Q+5\;H_{matrix}^{+}\rightarrow NAD^{+}+QH_{2}+4\;H_{intermembrane}^{+}\!
-$$
-
-* Code highlight with Rouge
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-## Download and Documentation
+## Link
 
 [**pRoJEct NeGYa (Github)**](https://github.com/akiritsu/pRoJEct-NeGYa)
 
