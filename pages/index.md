@@ -7,7 +7,7 @@ btn_text: true
 footer: true
 title: "猪猪屋-Home"
 author: "Zhusong"
-encrypted_text: true
+encrypted_text: false
 permalink: /
 ---
 
@@ -18,9 +18,7 @@ permalink: /
 	* Developer.Android
 * Address
 	* Home - Hangzhou/FuYang
-	* Live - Hangzhou/XiHuQu	
-* Phone
-	* <p class="encrypted" id="A62fkfFGPDxgCQUIjpHrBQf0yAMhScO9HNlxjxsy+UjnmmNg==">***********</p>
+	* Live - Hangzhou/XiHuQu
 * Education
 	* Zhejiang University of Technology/CST/Software Engineering 2009
 * Skill
@@ -47,7 +45,6 @@ permalink: /
 		* Java
 
 
-##  Servers
-* <a href="http://jenkins.lasong.com.cn">Jenkins</a> - 自动化任务
-* <a href="https://blog.lasong.com.cn">Blog</a> - 个人博客
-
+## MyServers
+* <a href="http://jenkins.lasong.com.cn">Jenkins</a>
+* <a href="https://blog.lasong.com.cn">Blog</a>
