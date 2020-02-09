@@ -47,4 +47,4 @@ permalink: /
 
 ## MyServers
 * <a href="http://jenkins.lasong.com.cn">Jenkins</a>
-* <a href="https://blog.lasong.com.cn">Blog</a>
+* <a href="https://www.lasong.com.cn">Blog</a>
