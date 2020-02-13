@@ -8,6 +8,8 @@ btn_text: true
 footer: true
 maximize: true
 date: 2020-2-9
+excerpt: "01:Github/Gitee Pages 绑定自定义域名, 加快访问速度"
+abstract: ""
 ---
 
 
