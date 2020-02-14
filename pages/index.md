@@ -8,6 +8,7 @@ footer: true
 title: "猪猪屋-Home"
 author: "Zhusong"
 encrypted_text: false
+excerpt: "一个记录自己财富的地方"
 permalink: /
 ---
 
