@@ -2,6 +2,7 @@
 title: 01:Github/Gitee Pages 绑定自定义域名, 加快访问速度
 author: Zhusong
 layout: post
+post_list: "category"
 category: Server
 home_btn: true
 btn_text: true

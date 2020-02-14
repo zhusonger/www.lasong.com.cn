@@ -1,7 +1,7 @@
 ---
 layout: default
 post_list: "category"
-toc: false
+toc: true
 home_btn: true
 btn_text: true
 footer: true

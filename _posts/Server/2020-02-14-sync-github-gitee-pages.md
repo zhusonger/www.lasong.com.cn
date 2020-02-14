@@ -2,6 +2,7 @@
 title: 04:Jenkins&Webhook&Shell&Python 实现Github Pages与Gitee Pages的自动同步
 author: Zhusong
 layout: post
+post_list: "category"
 category: Server
 home_btn: true
 btn_text: true

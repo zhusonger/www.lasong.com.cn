@@ -2,6 +2,8 @@
 title: 01:Android逆向工程-Apktool重建失败
 author: Zhusong
 layout: post
+footer: true
+post_list: "category"
 category: Android逆向
 date: 2020-2-12
 excerpt: "01:Android逆向工程-Apktool重建失败"
