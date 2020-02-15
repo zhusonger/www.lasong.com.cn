@@ -12,7 +12,7 @@ abstract: ""
 
 ## 错误
 
-反编译后重建失败
+反编译后重建失败, 错误提示如下
 
 ``` 
 # Step1:反编译
@@ -35,11 +35,24 @@ I: Using Apktool 2.4.1
 I: Checking whether sources has changed...
 I: Checking whether resources has changed...
 I: Building resources...
-W: /Users/zhusong/Documents/Dev/tools/apktool/jihuang/AndroidManifest.xml:2: error: No resource identifier found for attribute 'compileSdkVersion' in package 'android'
+W: /Users/zhusong/Documents/Dev/tools/apktool/jihuang/AndroidManifest.xml:2: 
+error: No resource identifier found for attribute 'compileSdkVersion' in package 
+'android'
 W: 
-W: /Users/zhusong/Documents/Dev/tools/apktool/jihuang/AndroidManifest.xml:2: error: No resource identifier found for attribute 'compileSdkVersionCodename' in package 'android'
+W: /Users/zhusong/Documents/Dev/tools/apktool/jihuang/AndroidManifest.xml:2: 
+error: No resource identifier found for attribute 'compileSdkVersionCodename' in 
+package 'android'
 W: 
-brut.androlib.AndrolibException: brut.common.BrutException: could not exec (exit code = 1): [/var/folders/18/6x_rsxv12xsfdgj59pk_bsrc0000gn/T/brut_util_Jar_4883802058732040566.tmp, p, --forced-package-id, 127, --min-sdk-version, 21, --target-sdk-version, 26, --version-code, 60, --version-name, 1.10, --no-version-vectors, -F, /var/folders/18/6x_rsxv12xsfdgj59pk_bsrc0000gn/T/APKTOOL6867855121849667474.tmp, -e, /var/folders/18/6x_rsxv12xsfdgj59pk_bsrc0000gn/T/APKTOOL4775937882521760254.tmp, -0, arsc, -I, /Users/zhusong/Library/apktool/framework/1.apk, -S, /Users/zhusong/Documents/Dev/tools/apktool/jihuang/res, -M, /Users/zhusong/Documents/Dev/tools/apktool/jihuang/AndroidManifest.xml]
+brut.androlib.AndrolibException: brut.common.BrutException: could not exec (exit 
+code = 1): [/var/folders/18/6x_rsxv12xsfdgj59pk_bsrc0000gn/T/
+brut_util_Jar_4883802058732040566.tmp, p, --forced-package-id, 127, --min-sdk-
+version, 21, --target-sdk-version, 26, --version-code, 60, --version-name, 1.10, 
+--no-version-vectors, -F, /var/folders/18/6x_rsxv12xsfdgj59pk_bsrc0000gn/T/
+APKTOOL6867855121849667474.tmp, -e, /var/folders/
+18/6x_rsxv12xsfdgj59pk_bsrc0000gn/T/APKTOOL4775937882521760254.tmp, -0, arsc, -
+I, /Users/zhusong/Library/apktool/framework/1.apk, -S, /Users/zhusong/Documents/
+Dev/tools/apktool/jihuang/res, -M, /Users/zhusong/Documents/Dev/tools/apktool/
+jihuang/AndroidManifest.xml]
 ```
 
 ## 解决方法
