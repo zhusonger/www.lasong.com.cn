@@ -1,5 +1,5 @@
 ---
-title: 04:Jenkins&Webhook&Shell&Python 实现Github Pages与Gitee Pages的自动同步
+title: 04:Jenkins&Webhook&Shell&Python 实现Github Pages与Gitee Pages&Coding Pages的自动同步
 author: Zhusong
 layout: post
 post_list: "category"
@@ -9,14 +9,16 @@ btn_text: true
 footer: true
 maximize: true
 date: 2020-2-14
-excerpt: "04:Jenkins&Webhook&Shell&Python 实现Github Pages与Gitee Pages的自动同步"
+excerpt: "04:Jenkins&Webhook&Shell&Python 实现Github Pages与Gitee Pages&Coding Pages的自动同步"
 abstract: ""
 ---
 
 ## 问题
-在之前实现了国内国外不同的个人博客之后, 发现经常会出现莫名其妙的问题导致页面错位乱掉了, 原来是国内的Gitee Pages强制同步Github之后, 域名对应不上, 而且国内的Gitee Pages自定义域名/HTTPS/自动部署都需要收费, 就改成默认是Github Pages, 百度搜索给成Gitee Pages
+在之前实现了国内国外不同的个人博客之后, 发现经常会出现莫名其妙的问题导致页面错位乱掉了, 原来是国内的Gitee Pages强制同步Github之后, 域名对应不上, 而且国内的Gitee Pages自定义域名/HTTPS/自动部署都需要收费, 就改成默认是Github Pages, 百度搜索给成Gitee Pages, 没有进行同步, 导致代码更新了但是没有部署
 
-那么同步Github到Gitee这个问题就比较棘手了
+相对来说, Coding Pages就比较好了, 跟Github Pages支持的一样, 只是收费的增加每小时可以部署的次数, 而且可以自定义域名, 要注意的一点是在绑定自定义域名的时候, DNS先改成默认/境外是coding pages的地址, 因为Coding服务器在国外
+
+现在来解决下同步Github到Gitee这个问题
 
 ## 方案一
 一种是手动操作, 每次有改动都去这么操作一次
