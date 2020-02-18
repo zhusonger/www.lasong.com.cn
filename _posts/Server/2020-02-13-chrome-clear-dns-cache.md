@@ -24,7 +24,7 @@ Chrome老是访问缓存, 其实网站/反向代理已经更新, 但是就是不
 
 ## 三：步骤
 打开调试工具(mac:option + command + i, windows:ctrl + shift + i) , 按住地址栏刷新按钮，出现子菜单，选择[清空缓存并硬性重新加载]，解决
-> <img src="{{site.url}}{{site.baseurl}}{{site.assets_path}}/img/server/img-chrome-clean-dns.png" width="80%">
+> <img src="{{site.assets_path}}/img/server/img-chrome-clean-dns.png" width="80%">
 
 ## 链接
 https://laotan.net/clear-chrome-301-disk-cache/

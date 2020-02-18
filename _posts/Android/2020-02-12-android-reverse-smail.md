@@ -60,13 +60,13 @@ abstract: ""
 		```  
 4. 找到应用类与启动类, 查看源码, 找到作为判断的地方, 这里使用jadx-gui演示  
 
-	<img src="{{site.url}}{{site.baseurl}}{{site.assets_path}}/img/android/img-android-jadx-gui-java.png" width="80%">
+	<img src="{{site.assets_path}}/img/android/img-android-jadx-gui-java.png" width="80%">
 
 5. 切换到smail, 找到onCreate方法, 在一步步跟踪, 找到判断条件的地方
 
-	<img src="{{site.url}}{{site.baseurl}}{{site.assets_path}}/img/android/img-android-jadx-gui-smail.png" width="80%">  
+	<img src="{{site.assets_path}}/img/android/img-android-jadx-gui-smail.png" width="80%">  
 
 
 6.	修改, 我们自己签名的肯定跟原包的签名不一样, 那我们就会执行finish, 我们把这个条件改成反向的, 不就跳过这个判断了嘛, 使用文本编辑软件, 修改**if-eqz**为**if-nez**, 保存文件  
 
-7.	重新打包签名, 参照上篇[00:ANDROID逆向工程-APKTOOL重建失败](<{{site.url}}{{site.baseurl}}/android-reverse-apktool-no-resource-found>)
+7.	重新打包签名, 参照上篇[00:ANDROID逆向工程-APKTOOL重建失败](</android-reverse-apktool-no-resource-found>)
