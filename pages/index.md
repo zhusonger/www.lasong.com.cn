@@ -21,7 +21,7 @@ permalink: /
 	* Home - Hangzhou/FuYang
 	* Live - Hangzhou/XiHuQu
 * Education
-	* Zhejiang University of Technology/CST/Software Engineering 2009
+	* Zhejiang University of Technology/Computer Science and Technology College/Software Engineering 2009
 * Skill
 	* Android - 6year
 		* OpenGL ES
