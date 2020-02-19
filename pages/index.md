@@ -48,5 +48,5 @@ permalink: /
 
 ## MyServers
 * <a href="http://jenkins.lasong.com.cn">Jenkins-自动化任务</a>
-* <a href="https://zhusongzhusong.gitee.io">Blog-国内Gitee Pages</a>
+* <a href="https://zhusong.gitee.io">Blog-国内Gitee Pages</a>
 * <a href="http://gogs.lasong.com.cn">Gogs-私人Github</a>
