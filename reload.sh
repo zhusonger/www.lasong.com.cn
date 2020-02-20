@@ -1,3 +1,3 @@
 #!/bin/sh
 pkill -f jekyll
-jekyll serve --detach --watch
+nohup jekyll serve --detach --watch >/dev/null 2>&1 &	
