@@ -9,7 +9,7 @@ markdown: kramdown
 webrick:
   headers:
     Access-Control-Allow-Origin: "*"
-gems:
+plugins:
   - jekyll-sitemap    
 ## Global Variables
 email: "song.zhu@lasong.com.cn"
