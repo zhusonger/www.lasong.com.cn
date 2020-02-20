@@ -37,9 +37,7 @@
   <tbody>
     {% for post in cate[1] %}
     <tr>
-      <td class="td_title">
-        <a href="{{post.url}}">{{ post.title }}</a>
-      </td>
+      <td class="td_title"><a href="{{post.url}}">{{ post.title }}</a></td>
       <td class="td_date">{{ post.date | date: "%b %d, %y" }}</td>
     </tr>
     {% endfor %}

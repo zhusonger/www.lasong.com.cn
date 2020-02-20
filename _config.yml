@@ -1,10 +1,10 @@
 ## Settings
-title: 猪猪屋
+title: 猪猪屋-一个我的记录财富的地方
 owner: "Zhusong"
 url: "https://www.lasong.com.cn"
 baseurl: ""
 permalink: /:title/
-description: ""
+description: "Blog By Zhusong"
 markdown: kramdown
 webrick:
   headers:
