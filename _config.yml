@@ -10,7 +10,9 @@ webrick:
   headers:
     Access-Control-Allow-Origin: "*"
 plugins:
-  - jekyll-sitemap    
+  - jekyll-sitemap  
+  - jekyll-paginate 
+  - jekyll-feed
 ## Global Variables
 email: "song.zhu@lasong.com.cn"
 github: "zhusonger/zhusonger.github.io"
