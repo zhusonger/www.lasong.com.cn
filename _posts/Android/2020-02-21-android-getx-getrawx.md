@@ -5,7 +5,7 @@ layout: post
 footer: true
 post_list: "category"
 category: Android
-date: 2020-2-20
+date: 2020-2-21
 excerpt: "01:Android自定义控件-getX和getRawX"
 abstract: ""
 ---
