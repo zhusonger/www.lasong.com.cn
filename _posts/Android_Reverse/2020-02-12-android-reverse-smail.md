@@ -63,9 +63,44 @@ abstract: ""
 	<img src="{{site.assets_path}}/img/android/img-android-jadx-gui-java.png" width="80%">
 
 5. 切换到smail, 找到onCreate方法, 在一步步跟踪, 找到判断条件的地方
+	
+	5.1 smail代码调试  
+		
+	* 拷贝smail文件夹 Android Stuido 项目中
+	* 工具栏下拉的Edit Configurations
+	* 点击+号选择Remote
+	* 配置Remote
 
+		```
+		Name: smail debug (自己喜欢的名字)
+		Port: 8700
+		JVM: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8700
+		(改了端口默认就是这个)
+		module: smail文件夹
+		```   
+	* Debug模式启动应用程序
+
+		```
+		adb shell am start -D -n 包名/Launcher类
+		```
+		
+	* 找到应用进程ID
+
+		```
+		adb shell ps | grep 包名
+		```
+	
+	* 绑定调试程序到
+		
+		```
+		adb forward tcp:8700 jdwp:2835(上一步找到的进程ID)
+		```
+		
+	* 工具栏下拉的Edit Configurations的位置, 选择我们新建的Remote配置
+	* 运行菜单栏Run->Debug "smail debug"
+	* 开始调试smail代码
+	
 	<img src="{{site.assets_path}}/img/android/img-android-jadx-gui-smail.png" width="80%">  
-
 
 6.	修改, 我们自己签名的肯定跟原包的签名不一样, 那我们就会执行finish, 我们把这个条件改成反向的, 不就跳过这个判断了嘛, 使用文本编辑软件, 修改**if-eqz**为**if-nez**, 保存文件  
 

@@ -5,7 +5,7 @@ toc: true
 home_btn: true
 btn_text: true
 footer: true
-title: "猪猪屋-Home"
+title: "猪猪屋-我的知识贮备基地"
 author: "Zhusong"
 encrypted_text: false
 excerpt: "一个记录自己财富的地方"

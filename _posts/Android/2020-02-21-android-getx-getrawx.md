@@ -1,12 +1,12 @@
 ---
-title: 01:Android自定义控件-getX和getRawX
+title: 00:Android自定义控件-自由拖动控件
 author: Zhusong
 layout: post
 footer: true
 post_list: "category"
 category: Android
 date: 2020-2-21
-excerpt: "01:Android自定义控件-getX和getRawX"
+excerpt: "00:Android自定义控件-自由拖动控件"
 abstract: ""
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 02:Android逆向工程-IDA
+title: 02:Android逆向工程-IDA(待完成)
 author: Zhusong
 layout: post
 footer: true

@@ -10,12 +10,10 @@ webrick:
   headers:
     Access-Control-Allow-Origin: "*"
 plugins:
-  - jekyll-sitemap  
-  - jekyll-paginate 
-  - jekyll-feed
+  - jekyll-sitemap
 ## Global Variables
 email: "song.zhu@lasong.com.cn"
-github: "zhusonger/zhusonger.github.io"
+github: "zhusonger/"
 # path to: css/, fonts/, img/ and js/
 assets_path: "/assets" # i.e. "/assets" 
 statement: "Zhusong, All Rights Reserved"
