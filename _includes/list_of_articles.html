@@ -23,9 +23,10 @@
 <!-- list of articles: sorted by category-->
 <h1>Post List, sorted by Category</h1>
 <table>
-{% for cate in site.categories %} 
+{% assign sorted_categories = site.categories | sort %}
+{% for cate in sorted_categories %} 
 {% capture cate_name %}
-{{ cate | first }}
+{{ cate[0] }}
 {% endcapture %}
 <table id="t_{{ cate_name | slugzie }}">
     <thead>
@@ -35,10 +36,11 @@
         </tr>
     </thead>
   <tbody>
-    {% for post in cate[1] %}
+    {% assign sorted_cate = cate[1] | sort %}
+    {% for post in sorted_cate %}
     <tr>
       <td class="td_title"><a href="{{post.url}}">{{ post.title }}</a></td>
-      <td class="td_date">{{ post.date | date: "%b %d, %y" }}</td>
+      <td class="td_date">{{ post.date | date: "%Y/%m/%d" }}</td>
     </tr>
     {% endfor %}
   </tbody>

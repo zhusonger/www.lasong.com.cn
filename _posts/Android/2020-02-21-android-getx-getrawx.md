@@ -1,59 +1,30 @@
 ---
-title: 00:Android自定义控件-自由拖动控件
+title: 02:Android自定义控件-自由拖动控件MoveView
 author: Zhusong
 layout: post
 footer: true
 post_list: "category"
 category: Android
-date: 2020-2-21
-excerpt: "00:Android自定义控件-自由拖动控件"
+date: 2020-2-22
+excerpt: "02:Android自定义控件-自由拖动控件MoveView"
 abstract: ""
 ---
 
 
-## 功能
-需要做一个控件随着手指拖动, 现在做的简单点, 不用WMS添加Window, 直接添加到布局中, 然后监听onTouch事件, 那样直接更新leftMargin和topMargin即可
+# 功能需求
+在当前页面内, 跟随手指移动, 先不管边界超出跟自动靠边  
+内容可随意自定义, 由外部传入
 
-## 问题
-在计算偏移距离时, 用了getX和getY来计算偏移量, 发现在疯狂抖动, 直接换了getRawX和getRawY就正常了
+# 思路
+首先是当前页面内有效, 就简单一点, 使用自定义控件加上布局的方式实现, 就不通过WMS来实现了
 
-## 区别
-getRawX：触摸点相对于屏幕的坐标  
-getX： 触摸点相对于触摸控件的坐标  
+跟随手指移动, 这里需要理解这个含义, 这里跟随的情况是 __不可交互的部分__ 跟随手指移动, 如果有按钮, 拖动条等这种需要交互的控件, 当手指在他们上面拖动时, 它不应该跟随你的手指去移动, 虽然可以控件中去区分后续动作是针对按钮的, 但是这样的灵敏度会有一定的差距, 体验感不是很好, 所以还是不去拦截可交互的内容. 当然, 不可点击的按钮还是作为可拖动的部分
 
-## 代码
+根据上面的描述, 需要在触摸拦截上处理一下
 
-```java
-private float mDownX;
-private float mDownY;
-private int mDownLeftMargin;
-private int mDownTopMargin;
+跟随手指移动, 有2种方式去更新位置, 一种是直接设置x,y值(WMS实现拖动窗口方式), 另一种比较简单, 更新控件的margin值  
+根据需求, 我们采用简单的实现
 
-@Override
-public boolean onTouchEvent(MotionEvent event) {
-    boolean ret = super.onTouchEvent(event);
-    switch (event.getAction()) {
-        case MotionEvent.ACTION_DOWN: {
-            mDownX = event.getRawX();
-            mDownY = event.getRawY();
-            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) getLayoutParams();
-            mDownLeftMargin = lp.leftMargin;
-            mDownTopMargin = lp.topMargin;
-            break;
-        }
 
-        case MotionEvent.ACTION_MOVE: {
-            float currentX = event.getRawX();
-            float currentY = event.getRawY();
-            float offsetX = currentX - mDownX;
-            float offsetY = currentY - mDownY;
-            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) getLayoutParams();
-            lp.leftMargin = mDownLeftMargin + (int) offsetX;
-            lp.topMargin = mDownTopMargin + (int) offsetY;
-            setLayoutParams(lp);
-            break;
-        }
-    }
-    return true;
-}
-```
+
+## 实现

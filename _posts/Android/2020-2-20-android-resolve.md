@@ -5,7 +5,7 @@ layout: post
 footer: true
 post_list: "category"
 category: Android
-date: 2020-2-27
+date: 2020-2-20
 excerpt: "00:Android问题集锦"
 abstract: "记录Android开发过程中碰到的问题"
 ---
