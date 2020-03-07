@@ -7,12 +7,12 @@ btn_text: true
 footer: true
 title: "猪猪屋-我的知识贮备基地"
 author: "Zhusong"
-encrypted_text: false
+encrypted_text: true
 excerpt: "一个记录自己财富的地方"
 permalink: /
 ---
 
-## Information
+# Information
 * Name 
 	* Zhu Song
 * Job
@@ -46,7 +46,7 @@ permalink: /
 		* Java
 
 
-## MyServers
+# Servers
 * <a href="https://jenkins.lasong.com.cn">Jenkins-自动化任务</a>
 * <a href="https://www.lasong.com.cn">Blog-就是这个啦=.=</a>
 * <a href="https://gogs.lasong.com.cn">Gogs-私人Github</a>
