@@ -3,7 +3,6 @@ title: 01:Android自定义控件-TextureView实现歌词控件LrcView
 author: Zhusong
 layout: post
 footer: true
-post_list: "category"
 category: Android
 date: 2020-2-21
 excerpt: "01:Android自定义控件-TextureView实现歌词控件LrcView"

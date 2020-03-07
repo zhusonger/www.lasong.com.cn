@@ -3,7 +3,6 @@ title: 02:Android自定义控件-自由拖动控件MoveView
 author: Zhusong
 layout: post
 footer: true
-post_list: "category"
 category: Android
 date: 2020-2-22
 excerpt: "02:Android自定义控件-自由拖动控件MoveView"

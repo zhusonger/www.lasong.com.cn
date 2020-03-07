@@ -3,14 +3,13 @@ title: 00:Android问题集锦
 author: Zhusong
 layout: post
 footer: true
-post_list: "category"
 category: Android
 date: 2020-2-20
 excerpt: "00:Android问题集锦"
 abstract: "记录Android开发过程中碰到的问题"
 ---
 
-# [Gradle同步问题](https://www.jianshu.com/p/24a38f8400cc)  
+# [__Gradle同步问题__](https://www.jianshu.com/p/24a38f8400cc)  
 
 新建项目卡在Gradle sync步骤，通过模拟Android Studio下载Gradle的过程来跳过IDE的下载过程, 因为它比较慢  
 

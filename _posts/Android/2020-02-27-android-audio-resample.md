@@ -3,7 +3,6 @@ title: 04:Android音频-PCM重采样
 author: Zhusong
 layout: post
 footer: true
-post_list: "category"
 category: Android
 date: 2020-2-27
 excerpt: "04:Android音频-PCM数据重采样"

@@ -3,7 +3,6 @@ title: 03:Android JNI开发-CMake的使用
 author: Zhusong
 layout: post
 footer: true
-post_list: "category"
 category: Android
 date: 2020-2-27
 excerpt: "03:Android JNI开发-CMake的使用"
