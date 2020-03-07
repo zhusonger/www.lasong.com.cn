@@ -1,5 +1,5 @@
 ---
-title: 04:Jenkins&Webhook&Shell&Python 实现Github Pages与Gitee Pages&Coding Pages的自动同步
+title: 04:Github Pages与国内网站自动同步
 author: Zhusong
 layout: post
 post_list: "category"
@@ -9,7 +9,7 @@ btn_text: true
 footer: true
 maximize: true
 date: 2020-2-14
-excerpt: "04:Jenkins&Webhook&Shell&Python 实现Github Pages与Gitee Pages&Coding Pages的自动同步"
+excerpt: "04:Github Pages与国内网站自动同步"
 abstract: ""
 ---
 
