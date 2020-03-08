@@ -166,7 +166,7 @@ abstract: ""
   为了解耦合时间跟歌词渲染的关系, 当然提供一个默认的时间提供器, 根据开始时间计算时间间隔  
   但是比较好的还是通过获取播放的歌曲当前时长
 
-	```
+	```java
 	public interface ITimeProvider {
 		// 获取当前播放时长
 	    long getCurrentPosition();
