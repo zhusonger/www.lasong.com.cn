@@ -14,7 +14,7 @@ abstract: ""
 根据krc歌词文件, 逐字逐句刷新当前播放的歌词  
 展示多行, 播放行高亮显示, 逐字更新歌词  
 
-![](https://www.lasong.com.cn/assets/img/gif/lyric.gif)
+![]({{site.assets_path}}/img/gif/lyric.gif)
 
 # 思路
 
