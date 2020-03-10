@@ -47,7 +47,7 @@ permalink: /
 		* Java
 
 * Resume Link
-	* <p class="encrypted" id="IphT1nVzuIhHg7VA9ER2SgK+xbtXKKD1Bc7UP4eXpL9Fs8wEHl3WD5/zzyz7wtdphqv9plMrOFok0U0eoCnEIcGB+SjPuw0cqk8b3e27NqhGPI66p1WyLRAGkMtWm+y7YvxguOhKFvuw==">Encrypted Link</p>
+	* <p class="encrypted" id="/0KQ3rEy6SpCAfZjIUNW1AnGWxKxnR1K+MnyDcau77qIBZszd/bT7xM0YNrvcBOuUe3MI4o6z9+IyqlLANiXwSEtmVUs1HcJBDCsRteFg4UzopZlwmAUCXK30j9PUOBacwcS1CdBEgYfPoLfYrcMT3bnWGLWVK0SE=">Encrypted Link</p>
 	
 # Servers
 * <a href="https://jenkins.lasong.com.cn">Jenkins-自动化任务</a>
