@@ -44,6 +44,3 @@
 * assets/fonts：字体文件
 * assets/js：脚本文件
 * _config.yml：配置文件
-
-Test
-
