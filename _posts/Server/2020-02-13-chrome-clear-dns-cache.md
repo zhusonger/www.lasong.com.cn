@@ -2,7 +2,6 @@
 title: 02:Chrome清除DNS缓存
 author: Zhusong
 layout: post
-post_list: "category"
 category: Server
 home_btn: true
 btn_text: true

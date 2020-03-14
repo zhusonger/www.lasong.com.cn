@@ -2,7 +2,6 @@
 title: 04:Github Pages与国内网站自动同步
 author: Zhusong
 layout: post
-post_list: "category"
 category: Server
 home_btn: true
 btn_text: true
