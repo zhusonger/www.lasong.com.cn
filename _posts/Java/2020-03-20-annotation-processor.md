@@ -29,15 +29,20 @@ abstract: ""
 	大致步骤: 定义注解 => 创建APT项目处理注解 => 在项目中添加注解  
 	这样我们就完成了对源码级别的注解的处理
 	
-	* 字节码级别(CLASS): 那字节码级别呢, 这里呢, 有高手可以直接去改, 然后再调整MD5码、偏移值之类的, 但是比较费时费力, JDK1.5也提供了Instrument用来修改字节码, 不过也需要对字节码结构有一定的掌握, ASM就是一个帮我们把大部分细节做掉, 只要专注与业务就行的方式。在什么时候进行修改呢, 看一下Android打包过程
-> 
-![1]({{site.assets_path}}/img/android/android-aapt.png){:width="60%"}
->	
-	
-		在.class与.dex之间, 会有transform的过程, 我们可以通过Android Studio提供的Tranform来实现字节码的修改, 由于要使用ASM代码, 如果直接在build.gradle文件里写会比较麻烦,可以自定义Gradle的插件, 在插件中实现修改, 在项目中应用这个插件即可, 效果如下
-> 
-![1]({{site.assets_path}}/img/android/android-grale-plugin.png){:width="60%"}
->	
+	* 字节码级别(CLASS): 那字节码级别呢, 这里呢, 有高手可以直接去改, 然后再调整MD5码、偏移值之类的, 但是比较费时费力, JDK1.5也提供了Instrument用来修改字节码, 不过也需要对字节码结构有一定的掌握, ASM就是一个帮我们把大部分细节做掉, 只要专注与业务就行的方式。
+		* ASM   
+		首先我们先来看下Android打包过程  
+		
+			> 
+			![1]({{site.assets_path}}/img/android/android-aapt.png){:width="60%"}
+			>	
+
+			在.class与.dex之间, 会有transform的过程, 我们可以通过Android Studio提供的Tranform来实现字节码的修改, 由于要使用ASM代码, 如果直接在build.gradle文件里写会比较麻烦,可以自定义Gradle的插件, 在插件中实现修改, 在项目中应用这个插件即可, 效果如下
+	> 
+	![1]({{site.assets_path}}/img/android/android-grale-plugin.png){:width="60%"}
+	>	
+		* 自定义类加载器
+			TODO
 	* 运行时级别(RUNTIME): 前面的注解处理器, 其实都是修改源文件, 在运行时几乎没什么性能影响, 但是运行时的话, 也可以识别注解并处理
 		*  自己实现工具类, 在需要的时刻, 去反射获取方法, 参数等, 根据注解执行任务
 		*  另外一种其实原理类似的方式, 只不过是使用系统提供的Proxy(动态代理), 每次执行方法都会调用invoke, 获取注解进行调整, 但是这种局限性比较多, 是代理接口。
