@@ -1,11 +1,11 @@
 ---
-title: 01:Java注解Annotaion(@interface) & 标记接口
+title: 01:注解Annotaion(@interface)&标记接口
 author: Zhusong
 layout: post
 footer: true
 category: Java
-date: 2020-3-20
-excerpt: "01:Java注解Annotaion(@interface) & 标记接口"
+date: 2020-3-19
+excerpt: "01:注解Annotaion(@interface)&标记接口"
 abstract: ""
 ---
 
@@ -94,7 +94,7 @@ public @interface Retention {
 进入ElementType看一下有哪些类型
 
 
-```
+```java
 /*
  * @author  Joshua Bloch
  * @since 1.5

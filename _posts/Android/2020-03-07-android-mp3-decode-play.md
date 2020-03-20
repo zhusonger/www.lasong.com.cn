@@ -1,11 +1,11 @@
 ---
-title: 02:Android多媒体-MP3边解码边播放
+title: 03:Android多媒体-MP3边解码边播放
 author: Zhusong
 layout: post
 footer: true
 category: Android
 date: 2020-3-07
-excerpt: "02:Android多媒体-MP3边解码边播放"
+excerpt: "03:Android多媒体-MP3边解码边播放"
 abstract: ""
 ---
 

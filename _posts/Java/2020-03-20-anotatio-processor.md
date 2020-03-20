@@ -1,16 +1,16 @@
 ---
-title: 02:Java注解处理器 & 反射
+title: 02:注解处理器&反射
 author: Zhusong
 layout: post
 footer: true
 category: Java
 date: 2020-3-20
-excerpt: "02:Java注解处理器 & 反射"
+excerpt: "02:注解处理器&反射"
 abstract: ""
 ---
 
 # 概念
-* 注解: 是JDK1.5之后加入的功能, 具体参考上一篇[01:Java注解Annotaion(@interface) & 标记接口](/java-anotation)
+* 注解: 是JDK1.5之后加入的功能, 具体参考上一篇[01:注解Annotaion(@interface) & 标记接口](/java-anotation)
 
 > * 源代码时期注解，即注解只出现在 .java 文件中，编译后便不再出现在生成的.class 文件中，这一阶段，对注解的处理有两种方式： 
 >  
