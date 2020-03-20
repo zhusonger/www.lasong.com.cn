@@ -99,4 +99,7 @@ apply from: 'javadoc_combined.gradle'
 
 
 	
-	
+# 缩写解释
+
+* aapt: Android Asset Packaging Tool => Android打包工具
+* apt: Annotation Processor Tool => 注解处理器	
