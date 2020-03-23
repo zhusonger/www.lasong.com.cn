@@ -156,7 +156,7 @@ public static void main(String[] args) {
 这里我们看到了什么时候配置了上下文加载器, 那JDBC怎么使用的呢？
 再来看DriverManager是怎么加载实现类。  
 
-```
+```java
 //  Worker method called by the public getConnection() methods.
 private static Connection getConnection(
     String url, java.util.Properties info, Class<?> caller) throws SQLException {
