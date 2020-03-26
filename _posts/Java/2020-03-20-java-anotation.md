@@ -210,6 +210,73 @@ public enum RetentionPolicy {
 * 保留范围   
 SOURCE < CLASS < RUNTIME  
 
+
+## JVM指令集
+
+简单了解下指令集, 代码是很简单的一个过程, 主要分析在注释中
+目前finally语句的实现都是通过在每种可能的分支下, 冗余的添加finally代码来实现的。从以下的分析中可以看到, finaly在4中情况下都会执行, 具体有哪4种呢?
+
+* try-catch内代码正常执行
+* try-catch内抛出异常(这个是根据异常表来查询的Exception table)
+	* 抛出可识别异常, 到自己码第8行
+
+		> 0     4     8   Class java/lang/Exception
+	* 抛出不可识别异常, 到17行 
+	
+		> 0     4     17   any
+* finally抛出任何异常, 到17行
+
+	> 8    13    17   any
+
+* 最奇葩的一种情况, 抛出异常时, 执行finally异常, 到17行
+
+	> 17    19    17   any
+
+```
+public int inc() {
+        int x;
+        try {
+//            0: iconst_1 // 将int型1推送至栈顶
+//            1: istore_1   // 保存栈顶int到第一个局部变量 slot_1(x) = 1
+//            2: iload_1    // 将第1个int型本地变量推送至栈顶 (slot_1(x) = 1 到栈顶)
+//            3: istore_2 // 将栈顶int型数值存入第2个本地变量 slot_2 = 1 备份x = 1的过程, 到这里不出错, 继续执行4-7, 否则跳转到8
+//            4: iconst_3 // 将int型3推送至栈顶
+//            5: istore_1 // 保存栈顶到第一个局部变量 slot_1(x) = 3 执行finally x = 3
+//            6: iload_2 //将第2个int型本地变量推送至栈顶 slot_2 = 1 取出备份的slot_2的值1, 返回1
+//            7: ireturn 返回栈顶int 1
+
+//            8: astore_2  // 到这里表示有Exception异常, 栈顶即为异常对象, 保存到slot_2 = Exception
+//            9: iconst_2  // 将int 2推送到栈顶
+//            10: istore_1 // 将int 2保存到slot_1(x) = 2中 x = 2
+//            11: iload_1  // 将slot_1(x) = 2 推到栈顶
+//            12: istore_3 // 将栈顶2保存到局部变量slot_3 = 2 // 备份x = 2
+//            13: iconst_3 // 将int 3推送到栈顶  // 执行finally x = 3
+//            14: istore_1 // 将栈顶3保存到局部变量slot_1 = 3
+//            15: iload_3 // 将slot_3 = 2 推到栈顶
+//            16: ireturn // 返回栈顶int 2
+
+//            17: astore        4   // 这是最后一个种情况, 把错误Exception放到slot_4中
+//            19: iconst_3      // 将int 3推送到栈顶
+//            20: istore_1      // x = 3
+//            21: aload         4 // 将slot_4 = 没有捕获的异常 推到栈顶
+//            23: athrow        // 抛出异常
+
+//            0     4     8   Class java/lang/Exception // 如果[0,4)没有异常出现Exception异常, 执行8
+//            0     4    17   any
+//            8    13    17   any
+//            17    19    17   any
+
+            x = 1;
+            return x;
+        } catch (Exception e) {
+            x = 2;
+            return x;
+        } finally {
+            x = 3;
+        }
+    }
+```
+
 # 参考链接
   
 字节码介绍  
