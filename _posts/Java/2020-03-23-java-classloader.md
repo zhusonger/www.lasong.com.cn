@@ -504,7 +504,7 @@ NameAndType        #30:#28
 
 ## 系统类加载器 
 
-* Bootstrap ClassLoader: 最顶层的类加载器, 由C++实现, 是虚拟机的一部分, 只加载核心库(\<JAVA_HOME\>/jre/lib), 出于安全考虑, Bootstrap类加载器只加载java,javax,sun开头的类。所有类的父类Object就是由Bootstrap类加载器加载的。但是获取getClassLoader时返回空。
+* Bootstrap ClassLoader: 最顶层的类加载器, 由C++/Java实现, Java最后还是会通过JNI调用到C++,是虚拟机的一部分, 只加载核心库(\<JAVA_HOME\>/jre/lib), 出于安全考虑, Bootstrap类加载器只加载java,javax,sun开头的类。所有类的父类Object就是由Bootstrap类加载器加载的。但是获取getClassLoader时返回空。
 
 * Extention ClassLoader: 扩展的类加载器, 加载扩展库(\<JAVA_HOME\>/jre/lib/ext)
 
@@ -666,8 +666,76 @@ ContextLoader是一个破坏双亲委托模型的方式, 但是并不是破坏�
 	> ```
 * 定义另一个定时任务去执行类的方法, 在不关闭应用的情况下, 会发现执行的结果发生了变化。 
 
+# Android类加载器
 
+* BootClassLoader  
+	Android中是用Java实现的BootClassLoader, 调用VMClassLoader类的包装类, 就是虚拟器启动时调用的, 加载系统类, 跟之前介绍的虚拟机规范里定义Bootstrap ClassLoader的一样. 在android中加载/system/framework/core-libart.jar核心库。
+
+* BaseDexClassLoader	
+	* PathClassLoader(SystemClassLoader)  
+	在静态类SystemClassLoader里返回的单例 类加载器, 还可以通过ClassLoader.getSystemClassLoader()获取到系统应用层级(Launcher)的类加载器。它不是系统类加载器, 只是它的路径是".", 在SDCard上一层目录。
 	
+	```
+	static private class SystemClassLoader {
+        public static ClassLoader loader = ClassLoader.createSystemClassLoader();
+    }
+    
+    /**
+     * Encapsulates the set of parallel capable loader types.
+     */
+    private static ClassLoader createSystemClassLoader() {
+        String classPath = System.getProperty("java.class.path", ".");
+        String librarySearchPath = System.getProperty("java.library.path", "");
+
+        // String[] paths = classPath.split(":");
+        // URL[] urls = new URL[paths.length];
+        // for (int i = 0; i < paths.length; i++) {
+        // try {
+        // urls[i] = new URL("file://" + paths[i]);
+        // }
+        // catch (Exception ex) {
+        // ex.printStackTrace();
+        // }
+        // }
+        //
+        // return new java.net.URLClassLoader(urls, null);
+
+        // TODO Make this a java.net.URLClassLoader once we have those?
+        return new PathClassLoader(classPath, librarySearchPath, BootClassLoader.getInstance());
+    }
+	```
+	
+	* PathClassLoader
+		代表着当前应用的类加载器
+	* DexClassLoader  
+		辅助加载Dex文件的类加载器。
+
+# Android类加载器的关系
+```
+// BootClassLoader 启动加载  单例 加载/system/framework/core-libart.jar
+ClassLoader bootClassLoader = MainActivity.class.getClassLoader().getParent();
+System.out.println(bootClassLoader);
+
+// PathClassLoader 系统路径 单例 父类BootClassLoader dex目录. (sdcard上级目录) native path elements 目录 /vendor/lib & /system/lib
+// 父类是BootClassLoader
+ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+System.out.println(systemClassLoader);
+
+// PathClassLoader 应用路径 dex目录 /data/app/cn.com.lasong-2/base.apk
+// native目录: nativeLibraryDirectories 应用本地库(发现使用的还是arm文件夹)
+// native path elements系统路径加上 应用包内的 lib/armeabi-v7a 和 包文件目录下的lib/arm
+// 这里对动态库的优化就是 解析应用包时, 把动态库放到手机框架下的文件夹下(如我的模拟器架构是arm), 如果找不到, 再到应用包内取找
+// 父类是BootClassLoader
+// 这个是插件化的根本, 使用这个类加载器加载额外的应用包内的类, 再加上处理生命周期
+ClassLoader appClassLoader = MainActivity.class.getClassLoader();
+System.out.println(appClassLoader);
+```
+
+|类加载器|
+|---|
+| BootClassLoader |	
+| PathClassLoader |	
+
 # 参考链接
   
 Java中init和clinit区别完全解析   
