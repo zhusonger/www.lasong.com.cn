@@ -73,7 +73,7 @@ abstract: ""
 
 ## 动态代理的实现方式
 
-* Proxy
+* Proxy  
 	这个是JDK提供的一个字节码生成的工具类。位于java.lang.reflect包下, 平时我们偶尔会用到的方法 Proxy.newProxy就是这个, 只是它是一层更上层的封装, 做了一些优化处理, 最后生成.class字节码文件是通过 ProxyGenerator.generateProxyClass, 你要是对字节码文件熟悉, 你完全可以自己实现一个类去生成字节码。 只要根据Java虚拟机给的规范来即可。  
 	Proxy的生成方式有一点限制, 那就是只能去实现接口。
 	
