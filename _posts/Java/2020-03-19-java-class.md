@@ -52,3 +52,6 @@ abstract: ""
 
 深入理解Java Class文件格式（九）  
 <https://blog.csdn.net/zhangjg_blog/article/details/22432599>
+
+Java虚拟机规范 & Java语言规范  
+<https://docs.oracle.com/javase/specs/index.html>
