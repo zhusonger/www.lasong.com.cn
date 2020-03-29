@@ -1,11 +1,11 @@
 ---
-title: 00:Java内存模型(JMM) & JVM内存结构 & Java对象模型
+title: 01:Java内存模型(JMM) & JVM内存结构 & Java对象模型
 author: Zhusong
 layout: post
 footer: true
 category: Java
 date: 2020-3-19
-excerpt: "00:Java内存模型(JMM) & JVM内存结构 & Java对象模型"
+excerpt: "01:Java内存模型(JMM) & JVM内存结构 & Java对象模型"
 abstract: ""
 ---
 

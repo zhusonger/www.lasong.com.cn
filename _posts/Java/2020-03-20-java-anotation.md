@@ -1,11 +1,11 @@
 ---
-title: 01:注解Annotaion(@interface)&标记接口
+title: 02:注解Annotaion(@interface)&标记接口
 author: Zhusong
 layout: post
 footer: true
 category: Java
 date: 2020-3-19
-excerpt: "01:注解Annotaion(@interface)&标记接口"
+excerpt: "02:注解Annotaion(@interface)&标记接口"
 abstract: ""
 ---
 
