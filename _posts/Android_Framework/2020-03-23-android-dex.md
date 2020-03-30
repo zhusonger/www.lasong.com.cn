@@ -130,7 +130,13 @@ The largest addressable member is 0xffff: 最大的地址是0xffff
 
 出现这个问题的根本原因还是因为, Android把字节码文件压缩成一个Dex文件, 把所有的字节码的方法、字段等都集中到一个文件了。
 
-PathClassLoader和DexClassLaoder都是继承自BaseDexClassLoader, 实现都在这里, 所以我们从它开始招
+PathClassLoader和DexClassLaoder都是继承自BaseDexClassLoader, 实现都在这里, 所以我们从它开始分析。
+
+在分析之前, 最好了解下Java类加载器的机制。  
+
+[04:类加载器CLASSLOADER](/java-classloader)
+
+
 
 ## Dex的加载过程分析
 
@@ -233,7 +239,7 @@ PathClassLoader和DexClassLaoder都是继承自BaseDexClassLoader, 实现都在�
 
 通过上面Dex文件的加载, 我想大部分拥有独立思考能力的小伙伴知道怎么解决65535的问题了吧, 产生的原因是一个Dex归并了所有的方法、字段, 既然装不下了, 我们再创建一个新的Dex文件, 把放不下的方法、字段放进去不就行了么。具体实现就不再分析了。看下Android提供的解决思路。看下MultiDex类的installSecondaryDexes方法即可。很简单明了。
 
-```
+```java
 private static void installSecondaryDexes(ClassLoader loader, File dexDir,
         List<? extends File> files)
         throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException,
@@ -274,4 +280,5 @@ ART应运而生。
 它的原理是在安装应用的时候, 我先生成机器平台相关的代码, 因为安装的时候可以接受一点等待的。为了以后使用应用的时候爽，我就忍忍吧。
 
 同时, ART还开发了一套[JIT编译器](https://source.android.google.cn/devices/tech/dalvik/jit-compiler?hl=zh-tw), 应用越跑越快了有没有，真棒！
+
 
