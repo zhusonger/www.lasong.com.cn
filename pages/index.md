@@ -53,4 +53,5 @@ permalink: /
 * <a href="https://jenkins.lasong.com.cn">Jenkins-自动化任务</a>
 * <a href="https://www.lasong.com.cn">Blog-就是这个啦=.=</a>
 * <a href="https://gogs.lasong.com.cn">Gogs-私人Github</a>
-* <a href="https://bt.lasong.com.cn">Bt-后台可视化运维平台</a>
+* <a href="http://bt.lasong.com.cn">Bt-后台可视化运维平台</a>
+* <a href="http://pan.lasong.com.cn">DizzOffice-私人办公套件</a>
