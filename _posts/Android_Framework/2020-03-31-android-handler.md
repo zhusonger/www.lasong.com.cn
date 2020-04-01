@@ -1,11 +1,11 @@
 ---
-title: 01:Android Handler源码分析
+title: 01:Android 消息轮询机制源码分析
 author: Zhusong
 layout: post
 footer: true
 category: Android Framework
 date: 2020-3-31
-excerpt: "01:Android Handler源码分析"
+excerpt: "01:Android 消息轮询机制源码分析"
 abstract: ""
 ---
 
@@ -13,40 +13,40 @@ abstract: ""
 
 ## 直接看Handler的注释
 
-1. 第一段  
-一个Handler允许 发送和处理 __Message&Runnable__ 到 __一个与线程的关联MessageQueue__ 。
-每一个Handler实例与一个线程以及线程内的MessageQueue绑定。
-当你创建一个Handler的那个时间, 它必然就与创建它(Handler)的线程/MessageQueue关联。
-它将会发送Message&Runnable到绑定线程的MessageQueue中, 并执行从线程队列中吐出的Message&Runnable。
+* 第一段    
+一个Handler允许 发送和处理 __Message&Runnable__ 到 __一个与线程的关联MessageQueue__ 。  
+每一个Handler实例与一个线程以及线程内的MessageQueue绑定。  
+当你创建一个Handler的那个时间, 它必然就与创建它(Handler)的线程/MessageQueue关联。  
+它将会发送Message&Runnable到绑定线程的MessageQueue中, 并执行从线程队列中吐出的Message&Runnable。  
 
 > 第一段翻译结束了。其实这里已经基本说明了Handler的原理。与线程绑定, 实际内部是MessageQueue在处理Message&Runnable。
 
-2. 第二段
-Handler有2个主要的作用:   
-(1) 在未来的某个时刻, 调度Message&Runnable执行  
-(2) 在自己线程中, 插入执行任务到其他线程
+* 第二段   
+Handler有2个主要的作用:     
+(1) 在未来的某个时刻, 调度Message&Runnable执行    
+(2) 在自己线程中, 插入执行任务到其他线程   
 
-> 到这里Handler的主要用途已经说完了。
+> 到这里Handler的主要用途已经说完了。 
 
-3. 第三段
-Message的调度可以使用的方法, postXXX的重载方法允许你将Runnable对象入队到MessageQueue,  
-sendXXX方法会入队一个包含一些数据的Message到MessageQueue,   
-并被handleMessage方法处理(需要你实现一个Handler子类)  
+* 第三段  
+Message的调度可以使用的方法, postXXX的重载方法允许你将Runnable对象入队到MessageQueue,    
+sendXXX方法会入队一个包含一些数据的Message到MessageQueue,     
+并被handleMessage方法处理(需要你实现一个Handler子类)    
 
-> 这一段说明的我们如何使用Handler, 以及使用它的区别
+> 这一段说明的我们如何使用Handler, 以及使用它的区别  
 
-4. 第四段
-当posting或者sending到一个Handler时, 你可以选择在MessageQueue准备好就立即执行。  
-也可以选择在一个绝对时间或延迟时间来执行。  
-后面2个方式可以允许你用来实现一个超时、计时和其他基于时间线的行为。  
+* 第四段  
+当posting或者sending到一个Handler时, 你可以选择在MessageQueue准备好就立即执行。   
+也可以选择在一个绝对时间或延迟时间来执行。    
+后面2个方式可以允许你用来实现一个超时、计时和其他基于时间线的行为。    
 
-> 这一段指明了Handler支持即时和延时的任务。
+> 这一段指明了Handler支持即时和延时的任务。  
 
-5. 第五段
-当一个应用进程创建的时候, 它有一个专属的主线程用来管理应用顶层对象(activities, broadcast receivers等)  
-和顶层对象创建的窗口集。你可以创建你自己的新线程, 然后通过Handler与主应用(即主线程)进行交互。
-你创建的线程的行为与之前说明的方法调用都一样的。
-发送的Runnable&Message将会在适当的时候, 被MessageQueue调度与处理。
+* 第五段  
+当一个应用进程创建的时候, 它有一个专属的主线程用来管理应用顶层对象(activities, broadcast receivers等)和顶层对象创建的窗口集。  
+你可以创建你自己的新线程, 然后通过Handler与主应用(即主线程)进行交互。    
+你创建的线程的行为与之前说明的方法调用都一样的。    
+发送的Runnable&Message将会在适当的时候, 被MessageQueue调度与处理。    
 
 ```java
 
@@ -94,11 +94,11 @@ sendXXX方法会入队一个包含一些数据的Message到MessageQueue,
 
 ## 成员变量
 
-* FIND_POTENTIAL_LEAKS
-用于检测这个当前Handler是否是一个可能内存泄漏的Handler。  
-从它的判断条件就可以看出来了, 它可能会造成内存的几种情况。  
-匿名内部类 或者 成员类(就是跟成员变量一个层级定义的类) 或者 局部类 (方法内部的类) 并且 没有static修饰的Handler。  
-其实这些都是一个意思, 就是这个Handler持有外部类的引用。   
+* FIND_POTENTIAL_LEAKS  
+用于检测这个当前Handler是否是一个可能内存泄漏的Handler。    
+从它的判断条件就可以看出来了, 它可能会造成内存的几种情况。    
+匿名内部类 或者 成员类(就是跟成员变量一个层级定义的类) 或者 局部类 (方法内部的类) 并且 没有static修饰的Handler。    
+其实这些都是一个意思, 就是这个Handler持有外部类的引用。     
 
 ```java
 private static final boolean FIND_POTENTIAL_LEAKS = false;
@@ -115,10 +115,11 @@ if (FIND_POTENTIAL_LEAKS) {
 }
 ```
 
-* MAIN_THREAD_HANDLER
+* MAIN_THREAD_HANDLER  
 
-应用主线程的Handler, 注意这里的Looper.getMainLooper()静态方法, 跟踪进去, 发现它返回了一个类变量sMainLooper, 那我们继续跟踪, 发现是在prepareMainLooper方法内赋值的。那这个prepareMainLooper又是在哪调用的呢。 
-就是ActivityThread中的main函数的调用的。这个就是应用的启动流程里的应用启动入口了。
+应用主线程的Handler, 注意这里的Looper.getMainLooper()静态方法, 跟踪进去, 发现它返回了一个类变量sMainLooper, 那我们继续跟踪, 发现是在prepareMainLooper方法内赋值的。  
+那这个prepareMainLooper又是在哪调用的呢。     
+就是ActivityThread中的main函数的调用的。这个就是应用的启动流程里的应用启动入口了。    
 
 ```java
 private static Handler MAIN_THREAD_HANDLER = null;
@@ -168,14 +169,14 @@ public static void main(String[] args) {
 }
 ```
 
-* mLooper & mQueue
+* mLooper & mQueue  
 
-实现线程轮询的核心类。具体到分析Looper和MessageQueue再看。
-2个属性的赋值都在构造方法里。
+实现线程轮询的核心类。具体到分析Looper和MessageQueue再看。  
+2个属性的赋值都在构造方法里。  
 
-这里就是在不理解Handler的情况下, 在非主线线程(主线线程启动就创建了Looper)中创建Handler出错的地方。这是因为Handler是跟线程绑定的, 如果线程没有创建Looper对象, 而直接创建Handler的报错。
+这里就是在不理解Handler的情况下, 在非主线线程(主线线程启动就创建了Looper)中创建Handler出错的地方。这是因为Handler是跟线程绑定的,   如果线程没有创建Looper对象, 而直接创建Handler的报错。  
 
-Looper.myLooper()又涉及到经常会问的一个知识点。ThreadLocal线程独立的一个便捷类。
+Looper.myLooper()又涉及到经常会问的一个知识点。ThreadLocal线程独立的一个便捷类。  
 
 ```java
 final Looper mLooper;
@@ -704,7 +705,8 @@ private static void prepare(boolean quitAllowed) {
 
 mSlowDispatchThresholdMs: 就是处理这个Message处理的时间, 如果超过这个阈值, 就打印日志  
 
-mSlowDeliveryThresholdMs: 这个是Message入队到MessageQueue会更新它需要执行的时间, 默认不传就是当前时间。如果我希望它执行的时间在10:00:01, 然后它的实际执行时间(因为是个队列, 一个个执行的, 但是肯定>=当前时间, 除非时光倒流)在10:00:02, 那它的希望执行的时间到实际执行的时间, 间隔是1s。间隔超过设置的值, 就打印日志。
+mSlowDeliveryThresholdMs: 这个是Message入队到MessageQueue会更新它需要执行的时间, 默认不传就是当前时间。  
+如果我希望它执行的时间在10:00:01, 然后它的实际执行时间(因为是个队列, 一个个执行的, 但是肯定>=当前时间, 除非时光倒流)在10:00:02, 那它的希望执行的时间到实际执行的时间, 间隔是1s。间隔超过设置的值, 就打印日志。
 
 ```java
 private Printer mLogging;
@@ -1080,11 +1082,11 @@ private int mNextBarrierToken;
 
 * next
 
-MessageQueue处理消息的主要方法。阻塞是由nativePollOnce的nextPollTimeoutMillis参数来实现的。
-三种情况:
-1. 当它等于-1时, 就是无限期等待。在没有消息时就是这个状态。
-2. 如果有消息正在处理, 就是0, 代表不阻塞。
-3. 如果非负正整数, 就等待这个时间, 最大不超过Inter的MAX_VALUE。这个情况一般就是2个消息之间有时间间隔。    
+MessageQueue处理消息的主要方法。阻塞是由nativePollOnce的nextPollTimeoutMillis参数来实现的。  
+三种情况:  
+1. 当它等于-1时, 就是无限期等待。在没有消息时就是这个状态。  
+2. 如果有消息正在处理, 就是0, 代表不阻塞。  
+3. 如果非负正整数, 就等待这个时间, 最大不超过Inter的MAX_VALUE。这个情况一般就是2个消息之间有时间间隔。      
 
 ```java
 @UnsupportedAppUsage
@@ -1209,6 +1211,9 @@ Message next() {
 
 # 参考
 
-looper竟然有副业？ 
+looper竟然有副业？   
 <http://www.imooc.com/article/details/id/286124>
+
+Android_打入messagequeue内部  
+<https://suojingchao.github.io/2015/12/09/Android_%E6%89%93%E5%85%A5MessageQueue%E5%86%85%E9%83%A8.html>
 
