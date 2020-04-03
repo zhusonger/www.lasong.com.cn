@@ -344,6 +344,10 @@ SecondStageMain方法是在[init.cpp](https://android.googlesource.com/platform/
 
 import其实还是通过ServiceParser & ActionParser执行的。
 
+这里把执行的过程加入到了一个队列。
+
+然后在while循环执行命令。
+
 ```cpp
 // 3. init.cpp
 int SecondStageMain(int argc, char** argv) {
@@ -994,14 +998,6 @@ onrestart表示进程重启就重启后面的进程。
 
 其他的也类似的方式启动了。
 
-这里需要注意一个地方。
-
-user定义了zygote进程的用户。
-
-group定义了zygote进程的用户组。
-
-socket创建一个本地
-
 ```sh
 # init.zygote32.rc
 service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server
@@ -1046,8 +1042,9 @@ on init
 
 到了这里。 init进程算真正意义上的启动完成了。
 
-下一篇分析zygote和system-server进程的启动。
+下一篇查看下rc文件的service, socket这些是如何处理。以及zygote和system-server进程的启动。
 
+# 参考
 
 Linux中rc文件的含义  
 <https://blog.csdn.net/wendaotaoa/article/details/7513484>
