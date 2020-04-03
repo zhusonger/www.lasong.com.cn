@@ -36,7 +36,7 @@
         </tr>
     </thead>
   <tbody>
-    {% assign sorted_cate = cate[1] | sort %}
+    {% assign sorted_cate = {cate[1] | sort: 'title', 'last'} %}
     {% for post in sorted_cate %}
     <tr>
       <td class="td_title"><a href="{{post.url}}">{{ post.title }}</a></td>

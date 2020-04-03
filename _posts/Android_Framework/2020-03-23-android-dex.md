@@ -9,6 +9,18 @@ excerpt: "00:Android 虚拟机Dalvik & ART"
 abstract: ""
 ---
 
+# 源码
+
+Android源码  
+<https://android.googlesource.com/>
+
+Android通用内核代码  
+<https://android.googlesource.com/kernel/common/>
+
+Bootlin Linux系统源码查看  
+<https://elixir.bootlin.com/linux/latest/source>
+
+
 # 一: Android虚拟机
 
 ## Dalvik
@@ -280,5 +292,4 @@ ART应运而生。
 它的原理是在安装应用的时候, 我先生成机器平台相关的代码, 因为安装的时候可以接受一点等待的。为了以后使用应用的时候爽，我就忍忍吧。
 
 同时, ART还开发了一套[JIT编译器](https://source.android.google.cn/devices/tech/dalvik/jit-compiler?hl=zh-tw), 应用越跑越快了有没有，真棒！
-
 

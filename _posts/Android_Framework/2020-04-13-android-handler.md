@@ -1,13 +1,16 @@
 ---
-title: 01:Android 消息轮询机制源码分析
+title: 03:Android 消息轮询机制源码分析
 author: Zhusong
 layout: post
 footer: true
 category: Android Framework
-date: 2020-3-31
-excerpt: "01:Android 消息轮询机制源码分析"
+date: 2020-04-13
+excerpt: "03:Android 消息轮询机制源码分析"
 abstract: ""
 ---
+# Android源码
+
+<https://android.googlesource.com/>
 
 # 一: Handler源码分析
 
