@@ -4,7 +4,7 @@ author: Zhusong
 layout: post
 footer: true
 category: Android Framework
-date: 2020-04-01
+date: 2020-04-02
 excerpt: "02:Android rc解析过程以及zygote进程的启动过程"
 abstract: ""
 ---

@@ -1,11 +1,11 @@
 ---
-title: 04:Android View事件分发源码分析
+title: 05:Android View事件分发源码分析
 author: Zhusong
 layout: post
 footer: true
 category: Android Framework
-date: 2020-4-1
-excerpt: "04:Android View事件分发源码分析"
+date: 2020-04-05
+excerpt: "05:Android View事件分发源码分析"
 abstract: ""
 ---
 # Android源码

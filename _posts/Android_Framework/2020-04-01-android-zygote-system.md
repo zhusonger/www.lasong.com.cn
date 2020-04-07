@@ -1,11 +1,11 @@
 ---
-title: 02:Android Zygote和SystemServer进程的启动流程
+title: 03:Android Zygote和SystemServer进程的启动流程
 author: Zhusong
 layout: post
 footer: true
 category: Android Framework
-date: 2020-4-1
-excerpt: "02:Android Zygote和SystemServer进程的启动流程"
+date: 2020-04-03
+excerpt: "03:Android Zygote和SystemServer进程的启动流程"
 abstract: ""
 ---
 

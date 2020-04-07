@@ -1,11 +1,11 @@
 ---
-title: 03:Android 消息轮询机制源码分析
+title: 04:Android 消息轮询机制源码分析
 author: Zhusong
 layout: post
 footer: true
 category: Android Framework
-date: 2020-04-13
-excerpt: "03:Android 消息轮询机制源码分析"
+date: 2020-04-04
+excerpt: "04:Android 消息轮询机制源码分析"
 abstract: ""
 ---
 # Android源码
