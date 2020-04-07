@@ -684,7 +684,7 @@ public static void main(String[] args) {
 
 ## SystemServer.run
 
-在run方法中, 会创建一个本地的接口系统服务管理。对应着前面系统启动时创建的servicemanager进程。
+在run方法中, 会创建一个本地的接口系统服务管理。用于创建于记录系统服务。
 
 同时会开启很多系统默认开启的服务。比如AMS。
 
