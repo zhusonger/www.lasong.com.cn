@@ -446,6 +446,8 @@ static Result<void> DoControlStart(Service* service) {
 
 到这里终于到我们service进程的创建了。不容易啊。
 
+首先通过init进程fork出子进程。再对设置的其它行为进程创建并发布。比如socket。
+
 跟以前的代码不一样。现在是通过DescriptorInfo来创建对应的任务了。比较隐蔽。
 
 在[descriptors.cpp](https://android.googlesource.com/platform/system/core/+/refs/tags/android-9.0.0_r54/init/descriptors.cpp)中, 找到CreateAndPublish方法定义以及SocketInfo类定义。
@@ -467,6 +469,7 @@ Result<Success> Service::Start() {
     }
     // 这个是新创建的进程。即在init进程里创建的子进程
     // 调用的线程直接进入后面的代码执行
+    // 子进程返回0, 父进程返回子进程pid
     if (pid == 0) {
         // ...
         std::for_each(descriptors_.begin(), descriptors_.end(),
@@ -615,7 +618,19 @@ void DescriptorInfo::CreateAndPublish(const std::string& globalContext) const {
 }
 ```
 
-到这里。我们rc的解析流程也差不多了。主要是在查找socket的创建过程。因为后面创建应用进程, 都是通过socket连接zygote进程来创建的。
+到这里。我们rc的解析流程也差不多了。
+
+zygote进程也的C++代码执行完了。
+
+这里主要是在查找socket的创建过程。
+
+因为后面创建应用进程, 都是通过socket连接zygote进程来创建的。
 
 所以我们要清楚, 服务端的socket是如何创建的。
+
+然后回到最开始的/system/bin/app_process执行文件的内容。
+
+找到[app_process.cpp](https://android.googlesource.com/platform/frameworks/base/+/refs/tags/android-10.0.0_r32/cmds/app_process/app_main.cpp)。
+
+这个继续下一章进程分析。
 
