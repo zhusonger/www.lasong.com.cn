@@ -218,7 +218,7 @@ SOURCE < CLASS < RUNTIME
 
 * try-catch内代码正常执行
 * try-catch内抛出异常(这个是根据异常表来查询的Exception table)
-	* 抛出可识别异常, 到自己码第8行
+	* 抛出可识别异常, 到字节码第8行
 
 		> 0     4     8   Class java/lang/Exception
 	* 抛出不可识别异常, 到17行 
@@ -228,11 +228,11 @@ SOURCE < CLASS < RUNTIME
 
 	> 8    13    17   any
 
-* 最奇葩的一种情况, 抛出异常时, 执行finally异常, 到17行
+* 最奇葩的一种情况, 执行finally操作时抛出未捕获的异常, 到17行
 
 	> 17    19    17   any
 
-```
+```java
 public int inc() {
         int x;
         try {
@@ -249,19 +249,19 @@ public int inc() {
 //            9: iconst_2  // 将int 2推送到栈顶
 //            10: istore_1 // 将int 2保存到slot_1(x) = 2中 x = 2
 //            11: iload_1  // 将slot_1(x) = 2 推到栈顶
-//            12: istore_3 // 将栈顶2保存到局部变量slot_3 = 2 // 备份x = 2
-//            13: iconst_3 // 将int 3推送到栈顶  // 执行finally x = 3
+//            12: istore_3 // 将栈顶2保存到局部变量slot_3 = 2 备份x = 2
+//            13: iconst_3 // 将int 3推送到栈顶 执行finally x = 3
 //            14: istore_1 // 将栈顶3保存到局部变量slot_1 = 3
 //            15: iload_3 // 将slot_3 = 2 推到栈顶
 //            16: ireturn // 返回栈顶int 2
 
 //            17: astore        4   // 这是最后一个种情况, 把错误Exception放到slot_4中
 //            19: iconst_3      // 将int 3推送到栈顶
-//            20: istore_1      // x = 3
-//            21: aload         4 // 将slot_4 = 没有捕获的异常 推到栈顶
+//            20: istore_1      // x = 3 执行finally x = 3
+//            21: aload         4   // 将slot_4 = 没有捕获到的异常 推到栈顶
 //            23: athrow        // 抛出异常
 
-//            0     4     8   Class java/lang/Exception // 如果[0,4)没有异常出现Exception异常, 执行8
+//            0     4     8   Class java/lang/Exception // 如果[0,4)出现Exception异常, 执行8
 //            0     4    17   any
 //            8    13    17   any
 //            17    19    17   any
