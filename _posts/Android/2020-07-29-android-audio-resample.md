@@ -1,11 +1,11 @@
 ---
-title: 05:Android音频-PCM重采样
+title: 06:Android音频-PCM重采样
 author: Zhusong
 layout: post
 footer: true
 category: Android
 date: 2020-7-29
-excerpt: "05:Android音频-PCM数据重采样"
+excerpt: "06:Android音频-PCM数据重采样"
 abstract: ""
 ---
 
