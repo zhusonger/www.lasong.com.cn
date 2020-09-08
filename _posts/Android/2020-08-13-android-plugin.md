@@ -1,11 +1,11 @@
 ---
-title: 06:Android 开发Gradle插件实现三方源码修改
+title: 07:Android 开发Gradle插件实现三方源码修改
 author: Zhusong
 layout: post
 footer: true
 category: Android
 date: 2020-8-13
-excerpt: "06:Android 开发Gradle插件实现三方源码修改"
+excerpt: "07:Android 开发Gradle插件实现三方源码修改"
 abstract: ""
 ---
 
