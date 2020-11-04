@@ -98,6 +98,88 @@ apply from: 'javadoc_combined.gradle'
 * 重新运行项目, 使用最新的依赖关系进行关联
 
 
+# Android App
+
+### 问题1: 一个动态高度的TextView, 在上下2个控件之间, 动态增长, 直到下面的那个控件撑到底部, 并且文字不能被裁减
+
+通过约束布局的layout\_constraintVertical\_bias和layout\_constraintVertical\_chainStyle实现高度的自适应, 通过代码中动态监控来设置最大行数来解决不裁剪的问题。
+
+因为是在recycleview里的, 可能会复用, 所以用addOnPreDrawListener监听。使用完之后调用removeOnPreDrawListener移除。
+
+```java
+/**
+ * 更新最大行数
+ * @param textView
+ */
+private void updateMaxLines(TextView textView) {
+    if (null == textView) {
+        return;
+    }
+    // 先重置为最大行数
+    textView.setMaxLines(Integer.MAX_VALUE);
+    textView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+        @Override
+        public boolean onPreDraw() {
+            textView.getViewTreeObserver().removeOnPreDrawListener(this);
+            float lineHeight = textView.getLineHeight() * textView.getLineSpacingMultiplier();
+            int height = textView.getHeight();
+            Layout layout = textView.getLayout();
+            if (null != layout) {
+                int lineCount = layout.getLineCount();
+                int bottom = layout.getLineBottom(lineCount - 1);
+                int lines = bottom > height ? (int)(height / lineHeight) : lineCount;
+                textView.setMaxLines(lines);
+            }
+            // 是否继续绘制, true继续绘制/false取消后续绘制
+            return true;
+        }
+    });
+}
+```
+
+### 问题2: 显示输入法并显示隐藏的输入框布局时正常, 但是在代码隐藏时, 状态已经是GONE, 但是还是显示在屏幕内
+
+原因是问题1中addOnPreDrawListener导致的问题, 监听有个返回值, 如果是false, 表示取消后续的绘制, 之前看的网上加的这个监听, 它返回false, 想着应该是不拦截处理的, 就照猫画虎的返回了false。这个问题很隐蔽, 不太容易发现。
+
+查看onPreDraw的代码以及返回值注释理解后改为true。
+
+```java
+/**
+ * Notifies registered listeners that the drawing pass is about to start. If a
+ * listener returns true, then the drawing pass is canceled and rescheduled. This can
+ * be called manually if you are forcing the drawing on a View or a hierarchy of Views
+ * that are not attached to a Window or in the GONE state.
+ *
+ * @return True if the current draw should be canceled and resceduled, false otherwise.
+ */
+@SuppressWarnings("unchecked")
+public final boolean dispatchOnPreDraw() {
+    boolean cancelDraw = false;
+    final CopyOnWriteArray<OnPreDrawListener> listeners = mOnPreDrawListeners;
+    if (listeners != null && listeners.size() > 0) {
+        CopyOnWriteArray.Access<OnPreDrawListener> access = listeners.start();
+        try {
+            int count = access.size();
+            for (int i = 0; i < count; i++) {
+                cancelDraw |= !(access.get(i).onPreDraw());
+            }
+        } finally {
+            listeners.end();
+        }
+    }
+    return cancelDraw;
+}
+```
+
+```java
+@return True if the current draw should be canceled and resceduled, false otherwise.
+
+cancelDraw |= !(access.get(i).onPreDraw()); 
+```
+这行代码就是如果有一个是返回false的, 那他就会取消绘制。TextView里的onPreDraw也是返回的true。
+
+
+
 	
 # 缩写解释
 
