@@ -16,7 +16,7 @@ abstract: ""
 * 新建Library Module项目
 * 删除androidTest、test、src/main/*下面的所有文件
 
-	![](./plugin_0.png)
+	![]({{site.assets_path}}/img/android/plugin_0.png)
 	
 * 更新build.gradle脚本
 
@@ -39,7 +39,7 @@ abstract: ""
 	```
 * 在src/main目录下新建groovy&resources文件夹
 
-	![](./plugin_1.png)
+	![]({{site.assets_path}}/img/android/plugin_1.png)
 	
 * groovy文件夹下, 新建代码包, 如cn.com.lasong
 * 添加groovy类, 右键包名->New->File->GreetingPlugin.groovy
@@ -100,15 +100,15 @@ abstract: ""
 
 * 修改项目根目录, 添加插件
 
-	![](./plugin_3.png)
+	![]({{site.assets_path}}/img/android/plugin_3.png)
 
 * 在其他模块应用并执行任务
 
-	![](./plugin_4.png)
+	![]({{site.assets_path}}/img/android/plugin_4.png)
 
 * 查看Build下的日志		
 
-	![](./plugin_5.png)
+	![]({{site.assets_path}}/img/android/plugin_5.png)
 
 #  实现
 	
