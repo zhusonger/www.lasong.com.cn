@@ -50,7 +50,7 @@ SYN队列：存放完成了二次握手的结果。 队列长度由listen函数�
 
 ACCEPT队列：存放完成了三次握手的结果。队列长度由listen函数的参数backlog指定。
 
-* 三次握手
+* 三次握手建立连接
 
 	![]({{site.assets_path}}/img/server/img-server-connect-tcp.png)
 
@@ -73,11 +73,11 @@ ACCEPT队列：存放完成了三次握手的结果。队列长度由listen函�
 	
 	> 到这里, 服务端就会出现创建了一个通道, 但是无人使用的问题。
 	
-* 四次挥手
+* 四次握手断开连接
 
 	![]({{site.assets_path}}/img/server/img-server-disconnect-tcp.png)
-	
-	
+		
+	关闭一侧的连接需要一对ACK和FIN。在这里,  客户端收到服务端的FIN之后, 会超时等待2MSL，然后关闭连接。服务端收到客户端返回的ACK就关闭连接。
 	
 ## UDP
 
