@@ -194,6 +194,84 @@ cancelDraw |= !(access.get(i).onPreDraw());
 这行代码就是如果有一个是返回false的, 那他就会取消绘制。TextView里的onPreDraw也是返回的true。
 
 
+### 问题3: 使用主题的方式的状态栏透明(Android5.0以上) 
+
+```xml
+<style name="AppTheme.TransparentBar">
+    <!-- true: status栏会有一层阴影；false: status栏没有阴影-->
+    <item name="android:windowTranslucentStatus">false</item>
+    <!--状态栏是否覆盖在ContentView上-->
+    <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
+    <item name="android:statusBarColor">@android:color/transparent</item>
+</style>
+```
+
+* 状态栏背景是纯色, 根布局fitsSystemWindows=true, background
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@android:color/holo_blue_dark"
+    tools:context=".MainActivity">
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+```
+
+* 状态栏与顶部AppBarLayout扩展到状态栏, 根布局&AppBarLayout 设置 fitsSystemWindows=true
+* 覆盖在AppBarLayout上可以使用elevation属性增大层级
+* AppBarLayout内的滑动并在指定高度停止 layout_scrollFlags=scroll|exitUntilCollapsed, 并设置minHeight(默认0,表示滑到顶)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@android:color/holo_blue_dark"
+    tools:context=".MainActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/ic_launcher_background"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:minHeight="?attr/actionBarSize"
+            />
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#4D000000"
+        android:elevation="20dp"
+        />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+```
 
 	
 ## 缩写解释
