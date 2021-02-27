@@ -224,7 +224,7 @@ cancelDraw |= !(access.get(i).onPreDraw());
 
 * 状态栏与顶部AppBarLayout扩展到状态栏, 根布局&AppBarLayout 设置 fitsSystemWindows=true
 * 覆盖在AppBarLayout上可以使用elevation属性增大层级
-* AppBarLayout内的滑动并在指定高度停止 layout_scrollFlags=scroll|exitUntilCollapsed, 并设置minHeight(默认0,表示滑到顶)
+* AppBarLayout内的滑动并在指定高度停止layout_scrollFlags=scroll\|exitUntilCollapsed, 并设置minHeight(默认0,表示滑到顶)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
