@@ -208,6 +208,7 @@ cancelDraw |= !(access.get(i).onPreDraw());
 ```
 
 * 状态栏背景是纯色, 根布局fitsSystemWindows=true, background
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
