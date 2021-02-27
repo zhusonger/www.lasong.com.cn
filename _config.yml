@@ -17,8 +17,8 @@ github: "zhusonger/"
 # path to: css/, fonts/, img/ and js/
 assets_path: "/assets" # i.e. "/assets" 
 statement: "Zhusong, All Rights Reserved"
-aq: "浙ICP备20003389号"
-aqlink: "http://www.beian.miit.gov.cn"
+aq: "浙ICP备20003389号-1"
+aqlink: "http://beian.miit.gov.cn"
 # default max toc levels: 1 - 6 (h1 - h6)
 toc_level: 3
 # texts randomly displayed in background
