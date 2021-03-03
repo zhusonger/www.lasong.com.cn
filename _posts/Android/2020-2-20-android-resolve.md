@@ -274,6 +274,13 @@ cancelDraw |= !(access.get(i).onPreDraw());
 
 ```
 
+### 问题4: TabLayout无法铺满屏幕
+
+* 添加tabMaxWidth属性
+
+```xml
+app:tabMaxWidth="0dp"
+``` 
 	
 ## 缩写解释
 
