@@ -39,7 +39,7 @@ WeakHandler就是在Runnable中间加了一个一个WeakRunnable充当桥梁, �
 
 ## 解决方法
 
-1. 可以跟WeakHandler一样, 定义一个全局变量mCallback。
+1. 可以跟WeakHandler一样, 定义一个Activity的全局变量mCallback。
 
 2. 也可以跟WeakHandler一起在变量定义时, 就创建WeakHandler和Handler.Callback实例。
 
