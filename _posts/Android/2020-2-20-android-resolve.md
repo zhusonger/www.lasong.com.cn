@@ -281,6 +281,10 @@ cancelDraw |= !(access.get(i).onPreDraw());
 ```xml
 app:tabMaxWidth="0dp"
 ``` 
+
+### 问题5: ViewPager滑动, 内容未更新, 一直重复渲染画面
+
+* 一般情况下, View莫名其妙的画面重叠, 花屏都是没有设置背景引起的, 设置activity的背景, 在主题/根布局都设置一下背景即可
 	
 ## 缩写解释
 
